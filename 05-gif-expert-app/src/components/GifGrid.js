@@ -1,9 +1,13 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import GifGridItem from './GifGridItem';
 
 const GifGrid = ({category}) => {
 
+    const [images, setImages] = useState([])
+
     useEffect(() => {
         getGifs();
+        console.log(images);
     }, []);     // vacio se ejecuta una vez
 
     const getGifs = async() => {
@@ -18,11 +22,22 @@ const GifGrid = ({category}) => {
                 url: img.images?.downsized_medium.url
             }
         });
+        setImages(gifs);
     }
 
     return (
         <div>
-            <h1> { category } </h1>
+            <h3> { category } </h3>
+            <ol>
+                {
+                    images.map(img => (
+                        <GifGridItem
+                            key={img.title}
+                            {...img}
+                        />
+                    ))
+                }
+            </ol>
         </div>
     )
 }
