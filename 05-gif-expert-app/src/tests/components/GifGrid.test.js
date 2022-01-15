@@ -1,44 +1,55 @@
-import React from "react";
+import React from 'react';
 import '@testing-library/jest-dom';
-import { shallow } from "enzyme";
-import { GifGrid } from "../../components/GifGrid";
-import { useFetchGifs } from "../../hooks/useFetchGifs";
-import { GifGridItem } from "../../components/GifGridItem";
-jest.mock("../../hooks/useFetchGifs");
+
+import { shallow } from 'enzyme';
+import { GifGrid } from '../../components/GifGrid';
+import { useFetchGifs } from '../../hooks/useFetchGifs';
+jest.mock('../../hooks/useFetchGifs');
 
 
-describe('tests in GifGrid', () => {
-    const category = 'death';
+describe('Pruebas en el <GifGrid />', () => {
 
-    test('should match snapshot', () => {
+    const category = 'One Punch';
+
+
+    test('debe de mostrarse correctamente', () => {
+
         useFetchGifs.mockReturnValue({
             data: [],
-            loading: true,
+            loading: true
         });
 
-        const wrapper = shallow(<GifGrid category={category} />);
-        expect(wrapper).toMatchSnapshot();
+        const wrapper = shallow( <GifGrid category={ category } /> );
+        expect( wrapper ).toMatchSnapshot();
+        
     });
 
-    test('should show items when useFetchGifs', () => {
+    test('debe de mostrar items cuando se cargan imágenes useFetchGifs', () => {
+        
         const gifs = [{
             id: 'ABC',
-            url: 'https://localhost/something.jpg',
-            title: 'title'
-        },{
+            url: 'https://localhost/cualquier/cosa.jpg',
+            title: 'Cualquier cosa'
+        },
+        {
             id: '123',
-            url: 'https://localhost/something.jpg',
-            title: 'title'
+            url: 'https://localhost/cualquier/cosa.jpg',
+            title: 'Cualquier cosa'
         }];
-        
+
         useFetchGifs.mockReturnValue({
-            data: [],
-            loading: false,
+            data: gifs,
+            loading: false
         });
 
-        const wrapper = shallow(<GifGrid category={category} />);
-        // expect(wrapper).toMatchSnapshot();
-        expect(wrapper.find('p').exists()).toBe(false);
-        expect(wrapper.find('GifGridItem').length).toBe(gifs.length);
-    });
-});
+        const wrapper = shallow( <GifGrid category={ category } /> );
+        
+        // expect( wrapper ).toMatchSnapshot();
+        expect( wrapper.find('p').exists() ).toBe(false);
+        expect( wrapper.find('GifGridItem').length ).toBe( gifs.length );
+    })
+    
+    
+
+})
+

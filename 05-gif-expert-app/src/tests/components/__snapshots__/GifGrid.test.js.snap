@@ -1,12 +1,12 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`tests in GifGrid should match snapshot 1`] = `
+exports[`Pruebas en el <GifGrid /> debe de mostrarse correctamente 1`] = `
 <Fragment>
   <h3
     className="animate__animated animate__fadeIn"
   >
      
-    death
+    One Punch
      
   </h3>
   <p
@@ -14,21 +14,6 @@ exports[`tests in GifGrid should match snapshot 1`] = `
   >
     Loading
   </p>
-  <div
-    className="card-grid"
-  />
-</Fragment>
-`;
-
-exports[`tests in GifGrid should show items when useFetchGifs 1`] = `
-<Fragment>
-  <h3
-    className="animate__animated animate__fadeIn"
-  >
-     
-    death
-     
-  </h3>
   <div
     className="card-grid"
   />
