@@ -3,6 +3,7 @@ import '@testing-library/jest-dom';
 import { shallow } from "enzyme";
 import { GifGrid } from "../../components/GifGrid";
 import { useFetchGifs } from "../../hooks/useFetchGifs";
+import { GifGridItem } from "../../components/GifGridItem";
 jest.mock("../../hooks/useFetchGifs");
 
 
@@ -10,12 +11,6 @@ describe('tests in GifGrid', () => {
     const category = 'death';
 
     test('should match snapshot', () => {
-        const gifs = {
-            id: 'ABC',
-            url: 'https://localhost/something.jpg',
-            title: 'title'
-        };
-        
         useFetchGifs.mockReturnValue({
             data: [],
             loading: true,
@@ -26,11 +21,15 @@ describe('tests in GifGrid', () => {
     });
 
     test('should show items when useFetchGifs', () => {
-        const gifs = {
+        const gifs = [{
             id: 'ABC',
             url: 'https://localhost/something.jpg',
             title: 'title'
-        };
+        },{
+            id: '123',
+            url: 'https://localhost/something.jpg',
+            title: 'title'
+        }];
         
         useFetchGifs.mockReturnValue({
             data: [],
@@ -38,5 +37,8 @@ describe('tests in GifGrid', () => {
         });
 
         const wrapper = shallow(<GifGrid category={category} />);
+        // expect(wrapper).toMatchSnapshot();
+        expect(wrapper.find('p').exists()).toBe(false);
+        expect(wrapper.find('GifGridItem').length).toBe(gifs.length);
     });
 });
