@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import RealExampleRef from './components/04-useRef/RealExampleRef';
+import LayoutEffect from './components/05-useLayoutEffect/LayoutEffect';
 // import FocusScreen from './components/04-useRef/FocusScreen';
 // import HookApp from './HookApp'
 // import CounterApp from './components/01-useState/CounterApp';
@@ -18,6 +19,7 @@ ReactDOM.render(
   // <FormWithCustomHook />,
   // <MultipleCustomHook />,
   // <FocusScreen />,
-  <RealExampleRef />,
+  // <RealExampleRef />,
+  <LayoutEffect />,
   document.getElementById('root')
 );
