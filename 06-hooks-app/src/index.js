@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import FocusScreen from './components/04-useRef/FocusScreen';
+import RealExampleRef from './components/04-useRef/RealExampleRef';
+// import FocusScreen from './components/04-useRef/FocusScreen';
 // import HookApp from './HookApp'
 // import CounterApp from './components/01-useState/CounterApp';
 // import CounterWithCustomHook from './components/01-useState/CounterWithCustomHook';
@@ -16,6 +17,7 @@ ReactDOM.render(
   // <CounterWithCustomHook />,
   // <FormWithCustomHook />,
   // <MultipleCustomHook />,
-  <FocusScreen />,
+  // <FocusScreen />,
+  <RealExampleRef />,
   document.getElementById('root')
 );

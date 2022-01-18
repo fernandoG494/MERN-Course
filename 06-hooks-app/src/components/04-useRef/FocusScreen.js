@@ -8,6 +8,7 @@ const FocusScreen = () => {
 
     const handleClick = () => {
         inputRef.current.select();
+        console.log(inputRef);
     }
     
     return (
