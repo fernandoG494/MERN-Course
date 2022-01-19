@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import RealExampleRef from './components/04-useRef/RealExampleRef';
-import LayoutEffect from './components/05-useLayoutEffect/LayoutEffect';
+// import RealExampleRef from './components/04-useRef/RealExampleRef';
+// import LayoutEffect from './components/05-useLayoutEffect/LayoutEffect';
+import Memorize from './components/06-useMemo/Memorize';
 // import FocusScreen from './components/04-useRef/FocusScreen';
 // import HookApp from './HookApp'
 // import CounterApp from './components/01-useState/CounterApp';
@@ -20,6 +21,7 @@ ReactDOM.render(
   // <MultipleCustomHook />,
   // <FocusScreen />,
   // <RealExampleRef />,
-  <LayoutEffect />,
+  // <LayoutEffect />,
+  <Memorize />,
   document.getElementById('root')
 );
