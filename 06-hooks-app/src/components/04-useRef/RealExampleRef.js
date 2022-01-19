@@ -1,28 +1,28 @@
 import React, { useState } from 'react';
-import MultipleCustomHook from '../03-examples/MultipleCustomHook';
+import { MultipleCustomHooks } from '../03-examples/MultipleCustomHooks';
 
 import '../02-useEffect/effects.css';
 
-const RealExampleRef = () => {
+export const RealExampleRef = () => {
+
     const [show, setShow] = useState(false);
 
     return (
         <div>
-            <h1>Real example of ref</h1>
+            <h1>RealExampleRef</h1>
             <hr />
 
-            {show &&  <MultipleCustomHook /> }
+            { show && <MultipleCustomHooks /> }
 
             <button
-                className='btn btn-primary mt-5'
-                onClick={() => {
-                    setShow(!show)
+                className="btn btn-primary mt-5"
+                onClick={ () => {
+                    setShow( !show );
                 }}
             >
                 Show/Hide
             </button>
+
         </div>
     )
 }
-
-export default RealExampleRef
