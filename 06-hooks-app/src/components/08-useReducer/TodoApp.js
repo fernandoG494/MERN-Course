@@ -15,19 +15,16 @@ const TodoApp = () => {
         description: ''
     });
 
-    // local storage no obligatorio pero pa saber qué hace
     useEffect(() => {
         localStorage.setItem('todos', JSON.stringify(todos));
     }, [todos]);
 
     const handleDelete = (todoId) => {
-        // crear accion
         const action = {
             type: 'delete',
             payload: todoId
         }
 
-        // dispatch
         dispatch(action);
     }
 
