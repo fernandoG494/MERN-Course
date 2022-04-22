@@ -1,3 +1,5 @@
+import { useMemo } from "react";
+
 import { useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "../../hooks/useForm";
 import { getHeroesByName } from "../../selectors/getHeroesByName";
@@ -16,11 +18,10 @@ export const SearchScreen = () => {
     });
     const { searchText } = formValues;
     
-    const heroesFiltered = getHeroesByName(q);
+    const heroesFiltered = useMemo(() => getHeroesByName(q), [q]);
 
     const handleSearch = (event) => {
         event.preventDefault();
-        console.log(searchText);
         navigate(`?q=${searchText}`);
     }
 
@@ -57,6 +58,17 @@ export const SearchScreen = () => {
                 <div className="col-7">
                     <h4>Resultados</h4>
                     <hr />
+
+                    {
+                        (q === '') ?
+                            <div className="alert alert-info">
+                                Introduzca una búsqueda válida
+                            </div> :
+                            (heroesFiltered.length === 0) &&
+                            <div className="alert alert-danger">
+                                No hay resultados: { q }
+                            </div>
+                    }
 
                     {
                         heroesFiltered.map(hero => ( 
