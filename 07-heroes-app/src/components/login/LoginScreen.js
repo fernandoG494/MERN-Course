@@ -5,7 +5,7 @@ import { types } from '../../types/types';
 
 export const LoginScreen = () => {
     const navigate = useNavigate();
-    const { dispatch } = useContext(AuthContext);
+    const { dispatch } = useContext( AuthContext )
 
     const handleLogin = () => {
         const action = {
@@ -14,22 +14,26 @@ export const LoginScreen = () => {
         }
 
         dispatch(action);
-        
-        navigate('/marvel', {
+
+        const lastPath = localStorage.getItem('lastPath') || '/marvel';
+
+
+        navigate( lastPath, {
             replace: true
         });
     }
-    
+
+
     return (
         <div className="container mt-5">
-            <h1>Login Screen</h1>
-        
+            <h1>Login</h1>
             <hr />
-            <button
-                className = "btn btn-primary"
-                onClick = { handleLogin }
-            >
-                Login
+
+            <button 
+                className="btn btn-primary"
+                onClick={ handleLogin }
+                >
+                    Login
             </button>
         </div>
     )
