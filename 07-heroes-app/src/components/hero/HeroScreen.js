@@ -18,6 +18,7 @@ export const HeroScreen = () => {
         first_appearance,
         characters
     } = hero;
+    
     const imgPath = `/assets/${id}.jpg`;
     
     const handleReturn = () => {
