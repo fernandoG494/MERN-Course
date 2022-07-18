@@ -10,4 +10,4 @@ const JournalApp = () => {
     )
 }
 
-export default JournalApp
+export default JournalApp;
