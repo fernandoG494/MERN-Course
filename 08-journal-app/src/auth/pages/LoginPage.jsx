@@ -1,5 +1,5 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     Grid,
     TextField,
@@ -18,11 +18,18 @@ import {
 
 export default function LoginPage() {
 
+    const { status } = useSelector(state => state.auth);
+
     const dispatch = useDispatch();
     const { email, password, onInputChange } = useForm({
         email: 'fernando@garcia.com',
         password: '123456'
     });
+
+    const isAuthenticated = useMemo(
+        () => status === 'checking' || status === 'authenticated',
+        [status]
+    );
 
     const onSubmit = (event) => {
         event.preventDefault();
@@ -71,7 +78,12 @@ export default function LoginPage() {
                         sx={{ mb: 2, mt: 1 }}
                     >
                         <Grid item xs={ 12 } sm={ 6 }>
-                            <Button variant='contained' fullWidth type='submit'>
+                            <Button
+                                variant='contained'
+                                fullWidth
+                                type='submit'
+                                disabled={ isAuthenticated }
+                            >
                                 Login
                             </Button>
                         </Grid>
@@ -81,6 +93,7 @@ export default function LoginPage() {
                                 variant='contained'
                                 fullWidth
                                 onClick={onGoogleSignIn}
+                                disabled={ isAuthenticated }
                             >
                                 <Google />
                                 <Typography sx={{ml: 1}}>
