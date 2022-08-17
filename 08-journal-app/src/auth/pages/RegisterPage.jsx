@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import {
     Grid,
     TextField,
     Typography,
     Button,
-    Link
+    Link,
+    Alert
 } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 import AuthLayout from '../layout/AuthLayout';
 import { useForm } from '../../hooks/useForm';
+import { startCreatingUserWithEmailPassword } from '../../store/auth/thunks';
 
 const formData = {
     email: '',
@@ -23,7 +26,11 @@ const formValidations = {
 };
 
 export default function RegisterPage() {
+    const dispatch = useDispatch();
     const [formSubmitted, setFormSubmitted] = useState(false);
+
+    const { status, errorMessage } = useSelector(state => state.auth);
+    const isCheckingAuth = useMemo(() => status === 'checking', [status]);
 
     const {
         formState, displayName, email, password, onInputChange,
@@ -33,7 +40,10 @@ export default function RegisterPage() {
     const onSubmit = (event) => {
         event.preventDefault();
         setFormSubmitted(true);
-        console.log(formState);
+
+        if(!isFormValid) return;
+
+        dispatch(startCreatingUserWithEmailPassword(formState));
     };
 
     return (
@@ -89,11 +99,23 @@ export default function RegisterPage() {
                         spacing={ 2 }
                         sx={{ mb: 2, mt: 1 }}
                     >
+                        <Grid
+                            item
+                            xs={ 12 }
+                            sm={ 12 }
+                            display={ !!errorMessage ? '' : 'none' }
+                        >
+                            <Alert severity='error'>
+                                { errorMessage }
+                            </Alert>
+                        </Grid>
+
                         <Grid item xs={ 12 } sm={ 12 }>
                             <Button
                                 variant='contained'
                                 fullWidth
                                 type='submit'
+                                disabled={ isCheckingAuth }
                             >
                                 Crear cuenta
                             </Button>
