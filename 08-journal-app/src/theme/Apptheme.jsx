@@ -1,7 +1,7 @@
 import React from 'react';
+import { purpleTheme } from './';
 import { ThemeProvider } from '@emotion/react';
 import CssBaseLine from '@mui/material/CssBaseline';
-import { purpleTheme } from './';
 
 const Apptheme = ({ children }) => {
     return (

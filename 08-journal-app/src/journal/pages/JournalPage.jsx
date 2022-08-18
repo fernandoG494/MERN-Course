@@ -1,18 +1,13 @@
-import { AddOutlined } from '@mui/icons-material';
-import { IconButton, Typography } from '@mui/material';
 import React from 'react';
+import { AddOutlined } from '@mui/icons-material';
 import JournalLayout from '../layout/JournalLayout';
-import NoteView from '../views/NoteView';
+import { IconButton } from '@mui/material';
 import NothingSelectedView from '../views/NothingSelectedView';
 
 const JournalPage = () => {
     return (
         <JournalLayout>
-            {/* <Typography>
-                Loren ipsum dolor sit amet, consectetur adipiscing elit.
-            </Typography> */}
             <NothingSelectedView />
-            {/* <NoteView /> */}
 
             <IconButton
                 size='small'
@@ -30,7 +25,7 @@ const JournalPage = () => {
             >
                 <AddOutlined sx={{ fontSize: 30 }}/>
             </IconButton>
-        </JournalLayout>      
+        </JournalLayout>
     );
 };
 

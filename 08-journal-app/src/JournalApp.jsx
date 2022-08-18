@@ -1,6 +1,6 @@
-import React from 'react'
-import AppRouter from './router/AppRouter'
-import Apptheme from './theme/Apptheme'
+import React from 'react';
+import Apptheme from './theme/Apptheme';
+import AppRouter from './router/AppRouter';
 
 const JournalApp = () => {
     return (
@@ -8,6 +8,6 @@ const JournalApp = () => {
             <AppRouter /> 
         </Apptheme>
     )
-}
+};
 
 export default JournalApp;
