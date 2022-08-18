@@ -34,7 +34,7 @@ export const signInWithGoogle = async() => {
     };
 };
 
-export const registerUserWithEmailPassword = async({ email, password, display }) => {
+export const registerUserWithEmailPassword = async({ email, password, displayName }) => {
     try{
         const createResponse = await createUserWithEmailAndPassword(FirebaseAuth, email, password);
         const { uid, photoURL } = createResponse.user;
@@ -45,7 +45,7 @@ export const registerUserWithEmailPassword = async({ email, password, display })
             uid,
             photoURL,
             email,
-            displayName: display
+            displayName
         };
     }catch(error){
         return {
