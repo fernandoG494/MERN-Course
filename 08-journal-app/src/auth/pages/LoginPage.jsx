@@ -5,36 +5,32 @@ import {
     TextField,
     Typography,
     Button,
-    Link
+    Link,
+    Alert
 } from '@mui/material';
 import { Google } from '@mui/icons-material';
 import { Link as RouterLink } from 'react-router-dom';
 import AuthLayout from '../layout/AuthLayout';
 import { useForm } from '../../hooks/useForm';
 import {
-    checkingAuth,
-    startGoogleLogin
+    startGoogleLogin,
+    startLoginWithEmailPassword
 } from '../../store/auth/thunks';
 
 export default function LoginPage() {
-
-    const { status } = useSelector(state => state.auth);
-
     const dispatch = useDispatch();
+    const { status, errorMessage } = useSelector(state => state.auth);
+
     const { email, password, onInputChange } = useForm({
         email: 'fernando@garcia.com',
         password: '123456'
     });
 
-    const isAuthenticated = useMemo(
-        () => status === 'checking' || status === 'authenticated',
-        [status]
-    );
+    const isAuthenticating = useMemo(() => status === 'checking', [status]);
 
     const onSubmit = (event) => {
         event.preventDefault();
-        console.log('Form Submitted: ', { email, password });
-        dispatch(checkingAuth());
+        dispatch(startLoginWithEmailPassword({ email, password }));
     };
 
     const onGoogleSignIn = () => {
@@ -66,10 +62,25 @@ export default function LoginPage() {
                             placeholder='Contraseña'
                             fullWidth
                             name='password'
-                            value={password}
+                            value={ password }
                             onChange={ onInputChange }
                         >
                         </TextField>
+                    </Grid>
+
+
+                    <Grid container>
+                        <Grid
+                            item
+                            xs={ 12 }
+                            sm={ 12 }
+                            sx={{ mt: 2 }}
+                            display={ !!errorMessage ? '' : 'none' }
+                        >
+                            <Alert severity='error'>
+                                { errorMessage }
+                            </Alert>
+                        </Grid>
                     </Grid>
 
                     <Grid
@@ -82,7 +93,7 @@ export default function LoginPage() {
                                 variant='contained'
                                 fullWidth
                                 type='submit'
-                                disabled={ isAuthenticated }
+                                disabled={ !!isAuthenticating }
                             >
                                 Login
                             </Button>
@@ -93,7 +104,7 @@ export default function LoginPage() {
                                 variant='contained'
                                 fullWidth
                                 onClick={onGoogleSignIn}
-                                disabled={ isAuthenticated }
+                                disabled={ !!isAuthenticating }
                             >
                                 <Google />
                                 <Typography sx={{ml: 1}}>
