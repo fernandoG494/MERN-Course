@@ -1,15 +1,12 @@
-import React from 'react';
 import { purpleTheme } from './';
+import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
-import CssBaseLine from '@mui/material/CssBaseline';
 
-const Apptheme = ({ children }) => {
+export const AppTheme = ({ children }) => {
     return (
-        <ThemeProvider theme={purpleTheme}>
-            <CssBaseLine />
-            {children}
+        <ThemeProvider theme={ purpleTheme }>
+            <CssBaseline />
+            { children }
         </ThemeProvider>
-    )
-}
-
-export default Apptheme;
+    );
+};

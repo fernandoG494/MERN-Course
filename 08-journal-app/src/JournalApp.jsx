@@ -1,13 +1,10 @@
-import React from 'react';
-import Apptheme from './theme/Apptheme';
-import AppRouter from './router/AppRouter';
+import { AppTheme } from './theme';
+import { AppRouter } from './router/AppRouter';
 
-const JournalApp = () => {
+export const JournalApp = () => {
     return (
-        <Apptheme>
-            <AppRouter /> 
-        </Apptheme>
-    )
+        <AppTheme>
+            <AppRouter />
+        </AppTheme>
+    );
 };
-
-export default JournalApp;
