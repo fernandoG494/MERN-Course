@@ -7,6 +7,16 @@ export const initialState = {
     errorMessage: null
 };
 
+export const savingState = {
+    status: 'checking',
+    uid: null,
+    email: null,
+    displayName: null,
+    photoURL: null,
+    errorMessage: null,
+    isSaving: true
+};
+
 export const authenticatedState = {
     status: 'authenticated',
     uid: '123ABC',

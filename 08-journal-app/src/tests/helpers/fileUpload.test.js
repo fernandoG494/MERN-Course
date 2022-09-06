@@ -18,19 +18,16 @@ describe('Pruebas en fileUpload.js', () => {
         const url = await fileUpload(file);
         expect(typeof url ).toBe('string');
 
-        // console.log(imageId);
         const segments = url.split('/');
         const imageId = segments[segments.length - 1].replace('.jpg', '');
         
         const cloudResponse = await cloudinary.api.delete_resources([ 'journal-app/' + imageId ], {
             resource_type: 'image'
         });
-        console.log({ cloudResponse });
     });
 
     test('debe de retornar null', async() => {
         const file = new File([], 'file.jpg');
-
         const url = await fileUpload(file);
         expect( url ).toBe(null);
     });
