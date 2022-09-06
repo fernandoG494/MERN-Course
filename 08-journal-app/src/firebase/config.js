@@ -1,18 +1,28 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 import { getFirestore } from 'firebase/firestore/lite';
+import { getEnvironments } from '../helpers/getEnvironments';
 
-console.log(import.meta.env.PRUEBA_ENV);
+const {
+    VITE_APIKEY,
+    VITE_AUTHDOMAIN,
+    VITE_PROJECTID,
+    VITE_STORAGEBUCKET,
+    VITE_MESSAGINGSENDERID,
+    VITE_APPID
+} = getEnvironments();
 
 //testing
 const firebaseConfig = {
-    apiKey: "AIzaSyD3yCUnIytnetR7zs_M6xm9ao5nSi5OAq8",
-    authDomain: "react-journal-app-test-1ae8c.firebaseapp.com",
-    projectId: "react-journal-app-test-1ae8c",
-    storageBucket: "react-journal-app-test-1ae8c.appspot.com",
-    messagingSenderId: "654993050308",
-    appId: "1:654993050308:web:007c1e6eab9d3931ce9791"
+    apiKey: VITE_APIKEY,
+    authDomain: VITE_AUTHDOMAIN,
+    projectId: VITE_PROJECTID,
+    storageBucket: VITE_STORAGEBUCKET,
+    messagingSenderId: VITE_MESSAGINGSENDERID,
+    appId: VITE_APPID
 };
+
+console.log(firebaseConfig);
 
 // production
 // const firebaseConfig = {
