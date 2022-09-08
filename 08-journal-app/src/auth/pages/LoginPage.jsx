@@ -80,7 +80,8 @@ export const LoginPage = () => {
                         <Grid item xs={ 12 } sm={ 6 }>
                             <Button
                                 disabled={ isAuthenticating }
-                                variant='contained' 
+                                variant='contained'
+                                aria-label='google-btn'
                                 fullWidth
                                 onClick={ onGoogleSignIn }
                             >

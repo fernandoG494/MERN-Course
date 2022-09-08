@@ -1,4 +1,4 @@
-import { purpleTheme } from './';
+import { purpleTheme } from './PurpleTheme';
 import { CssBaseline } from '@mui/material';
 import { ThemeProvider } from '@emotion/react';
 
