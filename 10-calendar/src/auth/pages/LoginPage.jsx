@@ -1,5 +1,3 @@
-import React from 'react';
-
 import './LoginPage.css';
 
 export const LoginPage = () => {
@@ -66,15 +64,15 @@ export const LoginPage = () => {
                             />
                         </div>
 
-                        <div className="d-grip gap-2">
+                        <div className="d-grid gap-2">
                             <input 
-                                type="submit"
-                                className="btnSubmit"
+                                type="submit" 
+                                className="btnSubmit" 
                                 value="Crear cuenta" />
                         </div>
                     </form>
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
