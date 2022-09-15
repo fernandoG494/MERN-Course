@@ -4,11 +4,7 @@ const { check } = require('express-validator');
 const { validarCampos } = require('../middlewares/validar-campos');
 
 // ? route => locahost + /api/auth/
-const { 
-    createUsuario,
-    loginUsuario,
-    revalidarToken
-} = require('../controllers/auth');
+const { createUsuario, loginUsuario, revalidarToken } = require('../controllers/auth');
 
 router.post(
     '/new',
@@ -32,5 +28,8 @@ router.post(
 );
 
 router.get('/renew', revalidarToken);
+
+router.post('/', loginUsuario);
+router.post('/renew', revalidarToken);
 
 module.exports = router;
