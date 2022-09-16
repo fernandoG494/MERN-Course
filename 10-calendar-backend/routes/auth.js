@@ -5,6 +5,7 @@ const { validarCampos } = require('../middlewares/validar-campos');
 
 // ? route => locahost + /api/auth/
 const { createUsuario, loginUsuario, revalidarToken } = require('../controllers/auth');
+const { validarJWT } = require('../middlewares/validar-jwt');
 
 router.post(
     '/new',
@@ -27,9 +28,6 @@ router.post(
     loginUsuario
 );
 
-router.get('/renew', revalidarToken);
-
-router.post('/', loginUsuario);
-router.post('/renew', revalidarToken);
+router.get('/renew', validarJWT, revalidarToken);
 
 module.exports = router;
