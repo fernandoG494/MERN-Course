@@ -17,6 +17,13 @@ const validarJWT = (req, res, next) => {
             process.env.SECRET_JWT_SEED
         );
 
+        if(!uid || !name){
+            return res.status(401).json({
+                ok: false,
+                msg: 'Datos del request invalidos'
+            });
+        };
+
         req.uid = uid;
         req.name = name;
     }catch(error){
