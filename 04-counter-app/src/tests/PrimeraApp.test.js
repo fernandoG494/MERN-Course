@@ -4,12 +4,6 @@ import {shallow} from 'enzyme'
 import PrimeraApp from '../PrimeraApp'
 
 describe('Pruebas del componente PrimeraApp', () => {
-    // test('monstrar mensaje "Hola soy Goku"', () => {
-    //     const saludo = 'Hola soy Goku';
-    //     const {getByText} = render(<PrimeraApp saludo={saludo}/>);
-    //     expect(getByText(saludo)).toBeInTheDocument();
-    // })
-
     test('debe mostrar el componente <PrimeraApp />', () => {
         const saludo = "Hola soy Goku"
         const wrapper = shallow(<PrimeraApp saludo={saludo}/>);
@@ -28,4 +22,4 @@ describe('Pruebas del componente PrimeraApp', () => {
         const textoParrafo = wrapper.find('p').text();
         expect(textoParrafo).toBe(subtitulo);      
     })
-})
+});

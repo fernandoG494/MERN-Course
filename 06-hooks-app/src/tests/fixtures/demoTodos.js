@@ -1,9 +1,12 @@
-export const demoTodos = [{
+export const demoTodos = [
+  {
     id: 1,
-    desc: 'Aprender React',
-    done: false
-},{
+    desc: "Aprender React",
+    done: false,
+  },
+  {
     id: 2,
-    desc: 'Aprender Mongo',
-    done: false
-}];
+    desc: "Aprender Mongo",
+    done: false,
+  },
+];
